@@ -3,10 +3,15 @@ import scrapy
 from pep_parse.items import PepParseItem
 
 
+PEP_SPIDER_NAME = 'pep'
+PEP_ALLOWED_DOMAINS = ['peps.python.org']
+PEP_START_URLS = ['https://peps.python.org/']
+
+
 class PepSpider(scrapy.Spider):
-    name = 'pep'
-    allowed_domains = ['peps.python.org']
-    start_urls = ['https://peps.python.org/']
+    name = PEP_SPIDER_NAME
+    allowed_domains = PEP_ALLOWED_DOMAINS
+    start_urls = PEP_START_URLS
 
     def parse_pep(self, response):
         pep_data = response.meta['pep_data']
